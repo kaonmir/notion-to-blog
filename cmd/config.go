@@ -16,7 +16,7 @@ type Config struct {
 type Notion struct {
 	TokenV2      string `yaml:"token_v2" env:"TOKEN_V2" env-required:"true"`
 	TablePageUrl string `yaml:"table_page_url" env:"TABLE_PAGE_URL" env-required:"true"`
-	DownloadDir  string `yaml:"download_dir" env:"DOWNLOAD_DIR" env-required:"true"`
+	// DownloadDir  string `yaml:"download_dir" env:"DOWNLOAD_DIR" env-required:"true"`
 }
 
 type Tistory struct {

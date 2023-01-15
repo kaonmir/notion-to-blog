@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/fedesog/webdriver"
@@ -88,9 +89,8 @@ func (s *Selenium) GetAccessToken(clientID string, secretKey string, blogName st
 
 	// Read response b
 	b, _ := ioutil.ReadAll(resp.Body)
-	body := string(b)
-	return body
-
+	accessToekn := strings.Split(string(b), "=")[1]
+	return accessToekn
 }
 
 // url := "https://www.tistory.com/oauth/access_token"
