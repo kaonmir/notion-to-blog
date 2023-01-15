@@ -20,8 +20,7 @@ func main() {
 	code := selenium.GetAuthenticationCode(tistoryClientID, tistoryBlogName)
 	accessToken := selenium.GetAccessToken(tistoryClientID, tistorySecretKey, tistoryBlogName, code) // TODO
 
-	_ = accessToken
+	tistory := blog.NewTistory(accessToken, tistoryBlogName)
 
-	// tistory := blog.NewTistory(selenium.Session, tistoryBlogName)
-	// tistory.Login(tistoryClientID, tistorySecretKey)
+	_ = tistory
 }

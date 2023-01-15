@@ -8,7 +8,6 @@ import (
 	"net/http"
 
 	"github.com/fatih/structs"
-	"github.com/fedesog/webdriver"
 )
 
 type PostBody struct {
@@ -19,16 +18,15 @@ type PostBody struct {
 }
 
 type Tistory struct {
-	session  *webdriver.Session
-	token    string
-	blogName string
+	// session     *webdriver.Session
+	accessToken string
+	blogName    string
 }
 
-func NewTistory(session *webdriver.Session, blogName string) *Tistory {
+func NewTistory(accessToken string, blogName string) *Tistory {
 	return &Tistory{
-		session: session,
-		// token:    token,
-		blogName: blogName,
+		accessToken: accessToken,
+		blogName:    blogName,
 	}
 }
 
@@ -43,7 +41,7 @@ func (t *Tistory) Post(kind string, postBody PostBody, modifyId string) (string,
 	// tag: 태그 (',' 로 구분)
 
 	body := structs.Map(postBody)
-	body["access_token"] = t.token
+	body["access_token"] = t.accessToken
 	body["blogName"] = t.blogName
 	body["output"] = "xml"
 	body["visibility"] = 3
